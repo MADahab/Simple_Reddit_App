@@ -3,33 +3,46 @@ import { useSelector, useDispatch } from 'react-redux';
 //import {  } from './Slice';
 import styles from '../../App.css';
 import { BigPost} from '../bigPost/BigPost'
+import { removePost, addPostFavorites, selectFavorites } from '../favorites/favoritesSlice'
 
 export function Post(props) {
+  const dispatch = useDispatch()
+  const favList = useSelector(selectFavorites);
   const post = props.post.data;
   const dmode = props.dmode;
   const [isActive, setIsActive] = useState(false);
+
+
 
   const dstyle = {
     backgroundColor: "#3a3737" ,
     borderColor: "white",
     color: "white"
-  }
-  
+  }  
   const lstyle = {
     backgroudColor: "fafafa",
     borderColor: 'black',
     color: 'black'
-  };
-  
+  };  
 
   const handleClick = () => {
   
     setIsActive(current => !current);
 
   };
-  //const count = useSelector();
-  //const dispatch = useDispatch();
-  //const [, ] = useState();
+
+   //funcs for adding and removing to/from favs
+
+   const handleAdd = () => {
+    dispatch(addPostFavorites(`https://www.reddit.com/${post.permalink}.json`))
+    window.confirm("Added to favorites")
+  }
+
+  const handleRemove = () => {
+    dispatch(removePost(post))
+  }
+
+  const found = favList.find(favpost => favpost.data.id === post.id)
 
   useEffect(() => {  
   },[])
@@ -58,7 +71,17 @@ export function Post(props) {
         <div className='info' style={{color:dmode? 'black' : 'black' }}>
           <h6>Up votes: {post.ups}</h6>
           <h6>Comments: {post.num_comments}</h6>
-        </div>       
+        </div>
+        {found
+        ?
+          <button onClick={handleRemove} className='btn'>
+            Remove From Favorites
+          </button>  
+        :
+          <button onClick={handleAdd} className='btn'>
+            add to favorites
+          </button> 
+        }       
       </div>
     );
   } 

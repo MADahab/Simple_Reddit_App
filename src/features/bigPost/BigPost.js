@@ -4,6 +4,8 @@ import { selectComments ,selectIsLoading, loadComments, selectMain, selectFailed
 import styles from './bigPost.css';
 import { clearAllListeners } from '@reduxjs/toolkit';
 import { Post } from '../post/Post';
+import { removePost, addPostFavorites, selectFavorites } from '../favorites/favoritesSlice'
+
 
 export function BigPost({post, isActive, handleClick, dmode}) {  
   const failed = useSelector(selectFailed)
@@ -11,6 +13,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
   const isLoading = useSelector(selectIsLoading)
   const main = useSelector(selectMain)
   const dispatch = useDispatch();
+  const favList = useSelector(selectFavorites);
 
   const dstyle = {
     backgroundColor: "#3a3737" ,
@@ -22,30 +25,35 @@ export function BigPost({post, isActive, handleClick, dmode}) {
     backgroudColor: "fafafa",
     borderColor: 'black',
     color: 'black'
-  };
+  }; 
 
-  
-  useEffect(() => {
-    dispatch(loadComments(`https://www.reddit.com/${post.permalink}.json`));    
-    },[dispatch, handleClick]);
-
-    
-  //const count = useSelector();
-  //const dispatch = useDispatch();
-  //const [, ] = useState();
-
-  let srcpic = false
-  if (post.thumbnail === 'self' || post.thumbnail === 'default') {
-    srcpic = true
+  const handleAdd = () => {
+    dispatch(addPostFavorites(`https://www.reddit.com/${post.permalink}.json`))
+    window.confirm("Added to favorites")
   }
 
-    
+  const handleRemove = () => {
+    dispatch(removePost(post))
+  }
 
+  const found = favList.find(favpost => favpost.data.id === post.id)
+
+  useEffect(() => {
+    dispatch(loadComments(`https://www.reddit.com/${post.permalink}.json`));    
+    },[dispatch, handleClick]);  
+
+    let srcpic = false
+    if (post.thumbnail === 'self' || post.thumbnail === 'default') {
+      srcpic = true
+    }  
   
     return (
-      <div style={dmode? dstyle: lstyle} onMouseLeave={handleClick}  className='modifiedlCont' post={post}>
-        <div className='TaAmod'>
+      <div style={dmode? dstyle: lstyle} className='modifiedlCont' post={post}>
+        <div className='TaAmod'>          
           <h2>{post.title}</h2>    
+          <div>
+            <button style={dmode? dstyle: lstyle} className='closebtn' onClick={handleClick}>X</button>
+          </div>
         </div>    
         <div className='selftext'>
           {post.selftext}
@@ -71,13 +79,23 @@ export function BigPost({post, isActive, handleClick, dmode}) {
           <h6>Comments: {post.num_comments}</h6>
           <h6>Posted by {post.author}</h6>
         </div>
-        <button className='btn'>
-          Add to Fav.
-        </button>  
+        {found
+        ?
+          <button onClick={handleRemove} className='btn'>
+            Remove From Favorites
+          </button>  
+        :
+          <button onClick={handleAdd} className='btn'>
+            add to favorites
+          </button> 
+        }
+        
       </div>
     )
 
 }
+
+
 
 // {main.selftext.includes('&amp') ? 'No Self Content': main.selftext}
 

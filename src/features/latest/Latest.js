@@ -31,8 +31,8 @@ export function Latest({dmode}) {
       <div>
         <div id='latest'><h1 className='loading'>Loading..</h1></div>
         <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
-        <div className='lodstatus'>
-           <h1>Loading...</h1>
+        <div className='lodstatus'>           
+           <img src='https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif' />
         </div>
       </div>      
     );

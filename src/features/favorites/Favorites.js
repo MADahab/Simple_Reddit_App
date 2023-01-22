@@ -45,7 +45,7 @@ export function Favorites({dmode}) {
           </Link>
           :
           posts.map((post) => (          
-            <Post dmode={dmode} key={post.data.id} post={post}/>  
+            <Post dmode={dmode} key={post.data.id} post={post}/> 
         ))
 
           }              
@@ -53,3 +53,6 @@ export function Favorites({dmode}) {
     </div>
   );
 }
+
+
+// 

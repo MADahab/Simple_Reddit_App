@@ -32,7 +32,7 @@ export function Cars({dmode}) {
           <div id='cars'><h1 className='loading'>Loading..</h1></div>
           <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
           <div className='lodstatus'>
-           <h1>Loading...</h1>
+            <img src='https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif' />
           </div>
         </div> 
     );
