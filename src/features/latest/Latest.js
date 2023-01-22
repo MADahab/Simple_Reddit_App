@@ -5,11 +5,19 @@ import { Post } from '../post/Post'
 import styles from '../../App.css';
 
 
-export function Latest() {
+export function Latest({dmode}) {
   
   const posts = useSelector(selectPosts);
   const isLoading = useSelector(selectIsLoading)
   const dispatch = useDispatch();
+
+  const dstyle = {
+    backgroundColor: "#3a3737" ,   
+  }
+  
+  const lstyle = {
+    backgroudColor: "fafafa",    
+  };
 
   
   useEffect(() => {
@@ -20,15 +28,22 @@ export function Latest() {
 
   if (isLoading) {
     return (
-     <div id='latest' ><h1>Loading..</h1></div>
+      <div>
+        <div id='latest'><h1 className='loading'>Loading..</h1></div>
+        <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
+        <div className='lodstatus'>
+           <h1>Loading...</h1>
+        </div>
+      </div>      
     );
   } else {
     return (
       <div >
         <div id='latest'></div>
+        <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
         <div  className='bigComp'>
           {posts.map((post) => (          
-              <Post key={post.data.id} post={post} />  
+              <Post dmode={dmode} key={post.data.id} post={post} />  
           ))}              
         </div>
       </div>

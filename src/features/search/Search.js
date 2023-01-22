@@ -5,7 +5,7 @@ import { Post } from '../post/Post'
 import styles from '../../App.css';
 
 
-export function Search() {
+export function Search({dmode}) {
   const [name, setName] = useState('');
   const [limit, setLimit] = useState('75')
   const posts = useSelector(selectPosts);
@@ -14,6 +14,25 @@ export function Search() {
 
   const handleSearch = ({ target }) => setName(target.value);
   const handleLimit = ({ target }) => setLimit(target.value);
+
+  const dstyle = {
+    backgroundColor: "#3a3737" ,   
+  }  
+  const lstyle = {
+    backgroudColor: "fafafa",    
+  };
+  
+  const dstyle2 = {
+    backgroundColor: "#3a3737" ,
+    borderColor: "white",
+    color: "white"
+  }
+  
+  const lstyle2 = {
+    backgroudColor: "rgb(232, 232, 232)",
+    borderColor: 'black',
+    color: 'black'
+  };
   
   useEffect(() => {    
       dispatch(loadSearch({name, limit}));
@@ -24,8 +43,9 @@ export function Search() {
     return (
       <div >
         
-        <div id='search'></div>
-        <div className='sbarcomp'>
+        <div id='search' ></div>
+        <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
+        <div className='sbarcomp' style={dmode? dstyle2: lstyle2}>
           <div>
             <label for='sbar' >Search:</label>
             <input value={name} id='sbar' onChange={handleSearch} style={{width: '60%'}}/>
@@ -38,7 +58,7 @@ export function Search() {
         
         <div style={{top: '30px' }} className='bigComp'>
           {posts.map((post) => (          
-              <Post key={post.data.id} post={post} />  
+              <Post dmode={dmode} key={post.data.id} post={post} />  
           ))}              
         </div>
       </div>

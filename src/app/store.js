@@ -5,6 +5,7 @@ import bigPostReducer from '../features/bigPost/bigPostSlice';
 import carsReducer from '../features/cars/carsSlice';
 import foodReducer from '../features/food/foodSlice';
 import searchReducer from '../features/search/searchSlice'
+import favoritesReducer from '../features/favorites/favoritesSlice'
 
 export const store = configureStore({
   reducer: {    
@@ -13,6 +14,7 @@ export const store = configureStore({
     bigPost: bigPostReducer,
     cars: carsReducer,
     food: foodReducer,
-    search: searchReducer
+    search: searchReducer,
+    favorites: favoritesReducer
   },
 });
