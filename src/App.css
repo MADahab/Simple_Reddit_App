@@ -1,6 +1,6 @@
 * { 
   box-sizing: border-box;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;  
 }
 
 .App {
@@ -370,19 +370,28 @@
 }
 
 .lodstatus {
-  position: relative;
+  position: fixed;
   padding: 20px 50px;  
-  line-height: 2;
-  border-radius: 10px;
-  border: 1px solid;
-  top: 300px;
-  width: fit-content;
-  align-items: center;
-  margin: 0 auto;
-  box-shadow: 0px 4px 10px 4px;
+  line-height: 2;  
+  justify-content: center;
+  width: 100%;
+  top: 300px;    
+  align-items: center;  
   text-decoration: none;
   letter-spacing: 2px;
+  margin:0 auto;
+  z-index: 1;  
 }
+
+.lodstatus img {
+  width: fit-content;
+  margin:0 auto;
+  box-shadow: 0px 4px 10px 4px;
+  border-radius: 10px;
+  border: 1px solid;
+
+}
+
 
 
 /*

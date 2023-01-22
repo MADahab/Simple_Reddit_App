@@ -41,17 +41,17 @@ export function Search({dmode}) {
 
 
     return (
-      <div >
+      <div >                
+        <div id='search' ></div>
+        <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
         { 
         isLoading ?
         <div className='lodstatus'>
-          <img src='https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif' />
+          <img className='lodgif' src='https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif' />
         </div>
         :
         <div></div>
-        }        
-        <div id='search' ></div>
-        <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
+        }
         <div className='sbarcomp' style={dmode? dstyle2: lstyle2}>
           <div>
             <label for='sbar' >Search:</label>

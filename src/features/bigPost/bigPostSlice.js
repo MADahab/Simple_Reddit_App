@@ -33,7 +33,8 @@ export const bigPostSlice = createSlice({
     },
     [loadComments.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.comments = action.payload[1].data.children;      
+      state.comments = action.payload[1].data.children;
+      state.main = action.payload;
     },
     [loadComments.rejected]: (state, action) => {
         state.failed = true;
