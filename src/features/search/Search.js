@@ -63,7 +63,7 @@ export function Search({dmode}) {
           </div>
         </div>
         
-        <div style={{top: '30px' }} className='bigComp'>
+        <div style={{top: '40px' }} className='bigComp'>
           {posts.map((post) => (          
               <Post dmode={dmode} key={post.data.id} post={post} />  
           ))}              

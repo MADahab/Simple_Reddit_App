@@ -50,7 +50,7 @@ export function Favorites({dmode}) {
         </div>
       <div id='favorites' className='bigComp'></div>
       <div id='thinlayer' style={dmode? dstyle: lstyle} ></div>
-      <div  className='bigComp'>
+      <div style={{top: '40px' }}  className='bigComp'>
       { posts.length === 0 ?
           <Link to='/search' className='nofavyet' style={dmode? dstyle2: lstyle2} >
             <h1>No Favorites yet</h1>

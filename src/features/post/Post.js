@@ -35,7 +35,7 @@ export function Post(props) {
 
    const handleAdd = () => {
     dispatch(addPostFavorites(`https://www.reddit.com/${post.permalink}.json`))
-    window.confirm("Added to favorites")
+    
   }
 
   const handleRemove = () => {
@@ -60,10 +60,11 @@ export function Post(props) {
 
   } else {
     return (
-      <div  onClick={handleClick} className='smallCont' style={dmode? dstyle: lstyle}>
-        
-        <h2 className='TaA' >{post.title}</h2>   
-        
+      <div  className='smallCont' style={dmode? dstyle: lstyle}>
+        <h2 className='TaA' >{post.title}</h2> 
+        <div className='enlargeBtn'>
+          <img src={require('../../imgs/enlarge.png')} style={dmode? dstyle: lstyle}  onClick={handleClick} />
+        </div>        
         <p style={{color:dmode? 'black' : 'black' }} className='pa' src='../' >Posted by {post.author}</p>      
         <img className='img' src=
           {srcpic ? require('../../imgs/R1.png') : post.thumbnail} 

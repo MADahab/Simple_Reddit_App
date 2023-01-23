@@ -30,7 +30,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
 
   const handleAdd = () => {
     dispatch(addPostFavorites(`https://www.reddit.com/${post.permalink}.json`))
-    window.confirm("Added to favorites")
+    
   }
 
   const handleRemove = () => {
@@ -83,9 +83,10 @@ export function BigPost({post, isActive, handleClick, dmode}) {
     return (
       <div style={dmode? dstyle: lstyle} className='modifiedlCont' post={post}>
         <div className='TaAmod'>          
-          <h2>{post.title}</h2>    
-          <div>
-          <button style={dmode? dstyle: lstyle} className='closebtn' onClick={handleClick} onMouseUp={handleClear} >X</button>
+          <h2>{post.title}</h2> 
+          <a className='smallink' style={{color:dmode? 'black' : 'black' }} href={`https://www.reddit.com/${post.permalink}`} target='_blank'><h6>Reddit url</h6></a>   
+          <div>          
+            <button style={dmode? dstyle: lstyle} className='closebtn' onClick={handleClick} onMouseUp={handleClear} >X</button>
           </div>
         </div>    
         <div className='selftext'>
@@ -95,10 +96,8 @@ export function BigPost({post, isActive, handleClick, dmode}) {
           post.secure_media === null ?
           handleImg()
           :
-          
-          
           <embed className='video' src={furl} width='800px' height='500px' />
-              
+   
         }
                       
                
@@ -128,7 +127,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
           <h6>Up votes: {post.ups}</h6>
           <h6>Comments: {post.num_comments}</h6>
           <h6>Posted by {post.author}</h6>
-          <a className='smallink' href={`https://www.reddit.com/${post.permalink}`} target='_blank'><h6>Reddit url</h6></a>
+          
         </div>
         {found
         ?

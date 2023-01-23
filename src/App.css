@@ -75,7 +75,7 @@
   font-weight: bold;
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  box-shadow: 0px 1px 5px 2px blue;
+  box-shadow: 0px 1px 5px 2px 
   
 }
 
@@ -193,6 +193,7 @@
 }
 
 .smallCont {
+  position: relative;
   justify-content: center;
   text-align: center;  
   padding: 10px;
@@ -207,17 +208,42 @@
   height: 300px;
   border: 2px solid black;
   border-radius: 15px;
-  transition:  .5s linear;
-  box-shadow: 0px 1px 7px 2px blue;
+  
+  
 }
 
-.smallCont:hover {  
-  cursor: pointer;
+.smallCont:hover {    
   position: relative;
   background-color: rgb(241, 241, 241);
-  box-shadow: 0 1px 4px 3px orange;
-  transition:  .2s linear;
+  box-shadow: 0px 8px 8px 0px orange;
   
+  top:-8px;
+  
+}
+
+.enlargeBtn {
+  position: relative;
+  top:25px;
+  width: 20px;
+  align-items: center;
+  display: flex;
+  height: 20px;
+  text-align: center;  
+  justify-content: center;       
+  font-family: sans-serif;
+  margin: 0 auto;
+  min-width: 20px;
+  margin-top:-188px;
+  margin-right: 2px;    
+  font-size: 12px;    
+  z-index: 0;
+  box-shadow: 0px 1px 8px 1px blue;
+}
+
+
+.enlargeBtn:hover {
+  box-shadow: 0px 1px 5px 1px;
+  cursor: pointer;
 }
 
 .TaA{
@@ -237,7 +263,9 @@
 .pa {
   justify-content: center;
   text-align: center;
-  padding-top: 10x;
+  position: relative;
+  top: 7px;
+  padding-top: 10px;
   display: flex; 
   grid-row-start: 1;
   grid-row-end: 3;
@@ -247,6 +275,7 @@
   padding-top: 10px;  
   border-radius: 15px ;
   align-items: center;
+  font-size: 14px;
   padding: 8px;
   margin:auto;
   background-color: rgb(218, 215, 215);
@@ -264,6 +293,7 @@
   max-width: 300px;
   position: relative;
   border-radius: 15px;
+  border: 1px solid black;
 }
 
 .btn {
