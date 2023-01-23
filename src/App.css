@@ -17,6 +17,7 @@
   z-index: 1; 
   background-color: rgb(247, 246, 246);
   padding-bottom: 13px;
+  box-shadow: 0px 5px 20px 5px black;
   } 
 
  .top h1 {
@@ -31,7 +32,7 @@
   font-size: 2.5rem ;
   border-radius: 10px;
   border: 2px solid ;
-  box-shadow: 0 1px 10px 1px;
+  box-shadow: 0px 1px 7px 2px blue;
     
  }
 
@@ -41,7 +42,7 @@
   cursor: pointer;
   position: relative;
   background-color: rgb(241, 241, 241);
-  box-shadow: 0 1px 4px 5px;
+  box-shadow: 0px 1px 7px 2px orange;
   transition:  .2s linear;
   
   
@@ -74,6 +75,7 @@
   font-weight: bold;
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  box-shadow: 0px 1px 5px 2px blue;
   
 }
 
@@ -82,7 +84,7 @@
   cursor: pointer;
   position: relative;
   background-color: rgb(241, 241, 241);
-  box-shadow: 0px 1px 10px 1px;
+  box-shadow: 0px 1px 5px 2px orange;
   transition:  .1s linear;
   
 }
@@ -206,13 +208,14 @@
   border: 2px solid black;
   border-radius: 15px;
   transition:  .5s linear;
+  box-shadow: 0px 1px 7px 2px blue;
 }
 
 .smallCont:hover {  
   cursor: pointer;
   position: relative;
   background-color: rgb(241, 241, 241);
-  box-shadow: 0 1px 4px 3px;
+  box-shadow: 0 1px 4px 3px orange;
   transition:  .2s linear;
   
 }
@@ -386,11 +389,14 @@
 .lodstatus img {
   width: fit-content;
   margin:0 auto;
-  box-shadow: 0px 4px 10px 4px;
+  box-shadow: 0px 1px 7px 1px orange;
   border-radius: 10px;
   border: 1px solid;
 
+
 }
+
+
 
 
 
