@@ -86,11 +86,3 @@ export function Post(props) {
     );
   } 
 }
-
-
-/*  <button className='btn'>
-          Add to Fav.
-    </button> 
-*/     
-
-//{post.thumbnail === 'self' ? require('../../imgs/R1.png') : post.thumbnail}
