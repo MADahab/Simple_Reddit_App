@@ -3,16 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 //import {  } from './Slice';
 import styles from '../../App.css';
 import { BigPost} from '../bigPost/BigPost'
-import { removePost, addPostFavorites, selectFavorites } from '../favorites/favoritesSlice'
+import { removePost, addPostFavorites, selectFavorites, selectIsLoading  } from '../favorites/favoritesSlice'
 
 export function Post(props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const favLoading = useSelector(selectIsLoading);
   const favList = useSelector(selectFavorites);
   const post = props.post.data;
   const dmode = props.dmode;
   const [isActive, setIsActive] = useState(false);
 
-
+  //some styles to handle light and dark mode
 
   const dstyle = {
     backgroundColor: "#3a3737" ,
@@ -63,7 +64,7 @@ export function Post(props) {
       <div  className='smallCont' style={dmode? dstyle: lstyle}>
         <h2 className='TaA' >{post.title}</h2> 
         <div className='enlargeBtn'>
-          <img src={require('../../imgs/enlarge.png')} style={dmode? dstyle: lstyle}  onClick={handleClick} />
+          <img src={require('../../imgs/enlarge2.png')} style={dmode? dstyle: lstyle}  onClick={handleClick} />
         </div>        
         <p style={{color:dmode? 'black' : 'black' }} className='pa' src='../' >Posted by {post.author}</p>      
         <img className='img' src=
@@ -75,12 +76,12 @@ export function Post(props) {
         </div>
         {found
         ?
-          <button onClick={handleRemove} className='btn'>
-            Remove From Favorites
+          <button onClick={handleRemove} className='btn2' disabled={favLoading? "disabled" : '' }>
+            
           </button>  
         :
-          <button onClick={handleAdd} className='btn'>
-            add to favorites
+          <button onClick={handleAdd} className='btn' disabled={favLoading? "disabled" : '' }>
+            
           </button> 
         }       
       </div>

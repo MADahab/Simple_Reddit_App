@@ -5,17 +5,21 @@ import styles from './bigPost.css';
 import { clearAllListeners } from '@reduxjs/toolkit';
 import { Post } from '../post/Post';
 import { findPath, propGetter, dig } from './findpath'
-import { removePost, addPostFavorites, selectFavorites } from '../favorites/favoritesSlice'
+import { removePost, addPostFavorites, selectFavorites, selectIsLoading as selectFavloading } from '../favorites/favoritesSlice'
 
 
 export function BigPost({post, isActive, handleClick, dmode}) {  
-  const failed = useSelector(selectFailed)
+  const failed = useSelector(selectFailed);
+  const favLoading = useSelector(selectFavloading);
   const comments = useSelector(selectComments);
-  const isLoading = useSelector(selectIsLoading)
-  const main = useSelector(selectMain)
+  const isLoading = useSelector(selectIsLoading);
+  const main = useSelector(selectMain);
   const dispatch = useDispatch();
   const favList = useSelector(selectFavorites);
 
+
+  //some styles to handle light and dark mode
+  
   const dstyle = {
     backgroundColor: "#3a3737" ,
     borderColor: "white",
@@ -32,28 +36,32 @@ export function BigPost({post, isActive, handleClick, dmode}) {
     dispatch(addPostFavorites(`https://www.reddit.com/${post.permalink}.json`))
     
   }
-
+  //remove post from fav
   const handleRemove = () => {
     dispatch(removePost(post))
   }
-
+  //clear big bost state when closing it
   const handleClear = () => {
     dispatch(clearBigPost())
   }
-
+  //chek if post if added in fav list
   const found = favList.find(favpost => favpost.data.id === post.id)
+
+  //disable the add/remove fav when loading to prevent duplicattion
+  
   
 
   useEffect(() => {
     dispatch(loadComments(`https://www.reddit.com/${post.permalink}.json`));    
-    },[dispatch, handleClick]);  
+    },[dispatch]);  
 
+    
     let srcpic = false
     if (post.thumbnail === 'self' || post.thumbnail === 'default') {
       srcpic = true
       
     } 
-
+    //url value coould be and image or article. fcondition to check it
     const handleImg = () => {if (post.url.includes('jpeg') || post.url.includes('png') || post.url.includes('jpg') || post.url.includes('jpg')) {
 
       return (
@@ -68,8 +76,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
             <img className='extlink' src=
                 {post.thumbnail} 
               />
-          </a> 
-          <h4>External Link</h4>
+          </a>           
         </div>
       )
     }}
@@ -81,7 +88,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
     
     
     return (
-      <div style={dmode? dstyle: lstyle} className='modifiedlCont' post={post}>
+      <div style={dmode? dstyle: lstyle} className='modifiedlCont' post={post}>               
         <div className='TaAmod'>          
           <h2>{post.title}</h2> 
           <a className='smallink' style={{color:dmode? 'black' : 'black' }} href={`https://www.reddit.com/${post.permalink}`} target='_blank'><h6>Reddit url</h6></a>   
@@ -100,10 +107,8 @@ export function BigPost({post, isActive, handleClick, dmode}) {
    
         }
                       
-               
-                        
-            
-        <div className='commentBox'>
+    
+        <div className='commentBox'>          
           <h2>Comments</h2>
          {
           isLoading ?
@@ -122,24 +127,22 @@ export function BigPost({post, isActive, handleClick, dmode}) {
             )
           })
          }
-        </div>
+        </div>        
         <div style={{color:dmode? 'black' : 'black' }} className='infomod'>
           <h6>Up votes: {post.ups}</h6>
           <h6>Comments: {post.num_comments}</h6>
           <h6>Posted by {post.author}</h6>
-          
-        </div>
-        {found
-        ?
-          <button onClick={handleRemove} className='btn'>
-            Remove From Favorites
+          {found
+          ?
+          <button disabled={favLoading? "disabled" : '' } onClick={handleRemove} className='bpbtn2'>
+            
           </button>  
-        :
-          <button onClick={handleAdd} className='btn'>
-            add to favorites
+          :
+          <button disabled={favLoading? "disabled" : '' } onClick={handleAdd} className='bpbtn'>
+            
           </button> 
-        }
-        
+          }           
+        </div>        
       </div>
     )
 
