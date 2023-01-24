@@ -38,45 +38,7 @@
         font-size: 12px;
     }
 
-    .smallink {
-        display: none;
-    }
-
-    .info h6 {
-        font-size: 12px;
-    }
-
-    .pa {
-        font-size: 12px;
-    }
-
-    .smallCont h2 {
-        font-size: 20px;
-    }
-
-    .modifiedlCont h2 {
-        font-size: 25px;
-    }
-
-    .commentBox {
-        max-height: 300px;
-    }
-
-    .commentBox h2 {
-        font-size: 20px;
-    }
     
-    .commentBox h4 {
-        font-size: 16px;
-    }
-
-    .commentBox h5 {
-        font-size: 14px;
-    }
-
-    .infomod h6 {
-        font-size: 10px;
-    } 
 
 
     
@@ -86,8 +48,15 @@
     .infomod h6 {
         display: none;
     }
+    
     .bpbtn {
         top: 8px;
     }
+
+    .extlink {
+        min-width: 150  px;
+        min-height: 150px;
+    }
+
 
   }

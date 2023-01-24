@@ -72,21 +72,29 @@ export function BigPost({post, isActive, handleClick, dmode}) {
     } else {
       return (
         <div className='extcont'>
-          <a  href={post.url} target='_blank' >
+          <a   href={post.url} target='_blank' >
             <img className='extlink' src=
-                {post.thumbnail} 
+                {post.thumbnail.includes('.com') ? post.thumbnail : require('../../imgs/external.png')} 
               />
           </a>           
         </div>
       )
     }}
 
+    let vurl = ''
+    let surl = ''
+    let audio
+    let video
+    //const fs = require('fs');
 
-    const furl = dig(main, 'fallback_url')
-   
+    if (post.is_video === true) {
+      vurl = dig(main, 'fallback_url');
+      audio = document.getElementById("audioOnly")      
+      video = document.getElementById("videoOnly")
+      
+    }
     
-    
-    
+
     return (
       <div style={dmode? dstyle: lstyle} className='modifiedlCont' post={post}>               
         <div className='TaAmod'>          
@@ -100,11 +108,15 @@ export function BigPost({post, isActive, handleClick, dmode}) {
           {post.selftext}
         </div>
         {
-          post.secure_media === null ?
+          post.is_video === false ?
           handleImg()
           :
-          <embed className='video' src={furl} width='800px' height='500px' />
-   
+          <div style={{width: '100%', display: 'flex'}}>
+            <div className='vidcont' style={{marginBottom: '30px', marginTop: '-25px' }}>
+              <video style={{width: '100%'}} id='videoOnly'  onPlay={() => audio.play()} onPause={() => audio.pause()} src={vurl} controls/>  
+              <audio style={{display: 'none'}} id='audioOnly' src={`${post.url}/DASH_audio.mp4`} controls/>        
+            </div>
+          </div>
         }
                       
     

@@ -199,7 +199,7 @@
   display: grid;
   grid-template-rows: 20% 20% 20% 20% 20%;
   grid-template-columns: 65% 35%;
-  min-width: 350px;  
+  min-width: 362px;  
   max-width: 500px;
   height: 300px;
   border: 2px solid black;
@@ -295,7 +295,7 @@ border-radius: 20%;
   max-width: 300px;
   position: relative;
   border-radius: 15px;
-  border: 1px solid black;
+  
 }
 
 .btn {

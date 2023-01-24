@@ -95,7 +95,7 @@
   .selftext {
     text-align: left;
     width: 95%;
-    margin:20px;
+    margin-bottom: 50px;
     font-size: 1.2rem;
     word-spacing: 1px;
 
@@ -190,24 +190,27 @@
   }
 
 
-  .extlink {    
-    position: relative;
-    top:-30px;
-    border-radius: 10px;
-    border: 2px solid black;
-  }
+  
 
   .extlink {
-    position: relative;       
-    margin-bottom:-15px;
-    box-shadow: 0px 1px 7px 1px blue;
-    transition: 0.2s linear;
+    position: relative;  
+    width: 15%;  
+    margin-top: -45px;  
+    border-radius: 10px;
+    transition: 0.5s linear;
+    margin-bottom: 5px;
   }
 
+  
   .extlink:hover {
    
-    box-shadow: 0px 1px 7px 1px orange;
+    top:-10px;
+    transition: 0.5s linear;
+    
+    
   }
+
+  
 
   .extcont h4 {
     position: relative;
@@ -305,4 +308,73 @@
   .bpbtn2:active {
     border: 3px solid black ;
     
+  }
+
+  .vidcont {
+    max-width:85%;
+    margin: 0 auto;
+  }
+
+
+
+  @media only screen and (max-width: 900px) {  
+    .smallink {
+      display: none;
+  }
+
+  .info h6 {
+      font-size: 12px;
+  }
+
+  .pa {
+      font-size: 12px;
+  }
+
+  .smallCont h2 {
+      font-size: 20px;
+  }
+
+  .modifiedlCont h2 {
+      font-size: 25px;
+  }
+
+  .commentBox {
+      max-height: 300px;
+  }
+
+  .commentBox h2 {
+      font-size: 20px;
+  }
+
+  .commentBox h4 {
+      font-size: 16px;
+  }
+
+  .commentBox h5 {
+      font-size: 14px;
+  }
+
+  .infomod h6 {
+      font-size: 10px;
+  } }
+
+
+  @media only screen and (max-width: 630px) {
+    .infomod h6 {
+        display: none;
+    }
+    
+    .bpbtn {
+        top: 8px;
+    }
+    .bpbtn2 {
+      top: 8px;
+  }
+
+    .extlink {
+        min-width: 200px;
+        min-height: 200px;
+    }
+
+
   }
