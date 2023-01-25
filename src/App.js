@@ -11,6 +11,7 @@ import { Sports } from './features/sports/Sports';
 import { Cars } from './features/cars/Cars';
 import { Food } from './features/food/Food';
 import { Search } from './features/search/Search';
+import { Welcome } from './features/welcomePage/Welcome'
 
 function App() {
   
@@ -109,7 +110,7 @@ const lstyle2 = {
       </div>
       
       <Routes>  
-        <Route path="/*" element={<Latest dmode={dmode} className='bigComp'/>} />       
+        <Route path="/*" element={<Welcome dmode={dmode} className='bigComp'/>} />       
         <Route path="/latest/*" element={<Latest dmode={dmode} className='bigComp'/>} /> 
         <Route path="/favorites/*" element={<Favorites dmode={dmode} className='bigComp'/>} />
         <Route path="/sports/*" element={<Sports dmode={dmode}  className='bigComp'/>} /> 

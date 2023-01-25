@@ -101,6 +101,19 @@
 
 }
 
+#welcome {
+  background-image: url(./imgs/brand_header_mobile@3x.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  opacity: .5;
+  transition: .75s linear;
+}
+
 #latest {
   background-image: url(./imgs/trending.jpg);
   background-position: center;
