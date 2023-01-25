@@ -81,19 +81,39 @@ export function BigPost({post, isActive, handleClick, dmode}) {
       )
     }}
 
-    let vurl = ''
-    let surl = ''
+    
+    
     let audio
     let video
-    //const fs = require('fs');
-
-    if (post.is_video === true) {
-      vurl = dig(main, 'fallback_url');
+    if (post.is_video === true) {      
       audio = document.getElementById("audioOnly")      
-      video = document.getElementById("videoOnly")
-      
+      video = document.getElementById("videoOnly")      
     }
-    
+
+    const getVid = () => {
+      try {        
+        return (
+          <div style={{width: '100%', display: 'flex'}}>
+            <div className='vidcont' style={{marginBottom: '30px', marginTop: '-25px' }}>
+              <video style={{width: '100%'}} id='videoOnly'  onPlay={() => audio.play()} onPause={() => audio.pause()} src={dig(main, 'fallback_url')} controls/>  
+              <audio style={{display: 'none'}} id='audioOnly' src={`${post.url}/DASH_audio.mp4`} controls/>        
+            </div>
+          </div>
+        )
+      }
+      catch(e) {
+        console.log('vurl not found')
+        return (
+          <div className='extcont'>
+          <a   href={post.url} target='_blank' >
+            <img className='extlink' src=
+                {post.thumbnail.includes('.com') ? post.thumbnail : require('../../imgs/external.png')} 
+              />
+          </a>           
+        </div>
+        )
+      }
+    }
 
     return (
       <div style={dmode? dstyle: lstyle} className='modifiedlCont' post={post}>               
@@ -111,12 +131,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
           post.is_video === false ?
           handleImg()
           :
-          <div style={{width: '100%', display: 'flex'}}>
-            <div className='vidcont' style={{marginBottom: '30px', marginTop: '-25px' }}>
-              <video style={{width: '100%'}} id='videoOnly'  onPlay={() => audio.play()} onPause={() => audio.pause()} src={vurl} controls/>  
-              <audio style={{display: 'none'}} id='audioOnly' src={`${post.url}/DASH_audio.mp4`} controls/>        
-            </div>
-          </div>
+          getVid()
         }
                       
     
