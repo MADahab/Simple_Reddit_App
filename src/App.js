@@ -13,7 +13,7 @@ import { Food } from './features/food/Food';
 import { Search } from './features/search/Search';
 
 function App() {
-
+  
   // Setting some state , func and consts to handle dark/light mode
 
 const [dmode, setDmode] = useState(false);

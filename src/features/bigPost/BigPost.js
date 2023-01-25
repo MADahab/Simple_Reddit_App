@@ -48,12 +48,30 @@ export function BigPost({post, isActive, handleClick, dmode}) {
   const found = favList.find(favpost => favpost.data.id === post.id)
 
   //disable the add/remove fav when loading to prevent duplicattion
-  
+
+
+  const closeButton = document.getElementById('closButon')
+    const handleClose = () => {
+      closeButton.click()
+    }
+
+    
   
 
   useEffect(() => {
     dispatch(loadComments(`https://www.reddit.com/${post.permalink}.json`));    
-    },[dispatch]);  
+  },[dispatch]);
+    
+  useEffect(() => {
+    try{ 
+      handleClose()
+    } catch (e) {
+      console.log('all small')
+    }    
+  },[dispatch])
+
+  
+      
 
     
     let srcpic = false
@@ -73,7 +91,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
       return (
         <div className='extcont'>
           <a   href={post.url} target='_blank' >
-            <img className='extlink' src=
+            <img style={{filter:dmode ? 'invert(1)':'invert(0)' }} className='extlink' src=
                 {post.thumbnail.includes('.com') ? post.thumbnail : require('../../imgs/external.png')} 
               />
           </a>           
@@ -115,13 +133,18 @@ export function BigPost({post, isActive, handleClick, dmode}) {
       }
     }
 
+
+    
+
+
+
     return (
       <div style={dmode? dstyle: lstyle} className='modifiedlCont' post={post}>               
         <div className='TaAmod'>          
           <h2>{post.title}</h2> 
           <a className='smallink' style={{color:dmode? 'black' : 'black' }} href={`https://www.reddit.com/${post.permalink}`} target='_blank'><h6>Reddit url</h6></a>   
           <div>          
-            <button style={dmode? dstyle: lstyle} className='closebtn' onClick={handleClick} onMouseUp={handleClear} >X</button>
+            <button id='closButon' style={dmode? dstyle: lstyle} className='closebtn' onClick={handleClick} onMouseUp={handleClear} >X</button>
           </div>
         </div>    
         <div className='selftext'>
