@@ -88,14 +88,23 @@ export function BigPost({post, isActive, handleClick, dmode}) {
           />
       )
     } else {
-      return (
+      return (        
+          post.thumbnail.includes('.com') ?           
         <div className='extcont'>
           <a   href={post.url} target='_blank' >
-            <img style={{filter:dmode ? 'invert(1)':'invert(0)' }} className='extlink' src=
-                {post.thumbnail.includes('.com') ? post.thumbnail : require('../../imgs/external.png')} 
+            <img className='extlink' src={post.thumbnail} 
               />
           </a>           
         </div>
+        :
+        <div className='extcont'>
+          <a   href={post.url} target='_blank' >
+            <img style={{filter:dmode ? 'invert(1)':'invert(0)' }} className='extlink' src=
+                {require('../../imgs/external.png')} 
+              />
+          </a>           
+        </div>
+
       )
     }}
 
@@ -155,8 +164,7 @@ export function BigPost({post, isActive, handleClick, dmode}) {
           handleImg()
           :
           getVid()
-        }
-                      
+        }                   
     
         <div className='commentBox'>          
           <h2>Comments</h2>
